@@ -29,5 +29,4 @@ class Repository @Inject constructor(
 
     fun readOnBoardingState(): Flow<Boolean> =
         dataStore.readOnBoardingState()
-
 }

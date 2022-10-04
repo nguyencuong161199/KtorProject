@@ -4,7 +4,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.* // ktlint-disable no-wildcard-imports
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
@@ -19,13 +19,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.example.gstktor.ui.theme.*
-import com.google.accompanist.pager.*
+import com.example.gstktor.R
 import com.example.gstktor.domain.model.OnBoardingPage
 import com.example.gstktor.navigation.Screen
+import com.example.gstktor.ui.theme.* // ktlint-disable no-wildcard-imports
 import com.example.gstktor.util.Constants.LAST_ON_BOARDING_PAGE
 import com.example.gstktor.util.Constants.ON_BOARDING_PAGE_COUNT
-import com.example.gstktor.R
+import com.google.accompanist.pager.* // ktlint-disable no-wildcard-imports
+
 @ExperimentalAnimationApi
 @ExperimentalPagerApi
 @Composable
@@ -33,6 +34,7 @@ fun WelcomeScreen(
     navController: NavHostController,
     welcomeViewModel: WelcomeViewModel = hiltViewModel()
 ) {
+    // setup 3 trang hiển thị trên màn hình
     val pages = listOf(
         OnBoardingPage.First,
         OnBoardingPage.Second,
@@ -40,7 +42,6 @@ fun WelcomeScreen(
     )
 
     val pagerState = rememberPagerState()
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -54,6 +55,7 @@ fun WelcomeScreen(
         ) { position ->
             PagerScreen(onBoardingPage = pages[position])
         }
+        // Setup dấu "..." trong welcome screen
         HorizontalPagerIndicator(
             modifier = Modifier
                 .weight(1f)
@@ -72,6 +74,7 @@ fun WelcomeScreen(
     }
 }
 
+// custom cho các trang thuộc welcome screen
 @Composable
 fun PagerScreen(onBoardingPage: OnBoardingPage) {
     Column(
@@ -107,6 +110,7 @@ fun PagerScreen(onBoardingPage: OnBoardingPage) {
     }
 }
 
+// custom cho button kết thúc thuộc welcome screen
 @ExperimentalAnimationApi
 @ExperimentalPagerApi
 @Composable
@@ -125,7 +129,8 @@ fun FinishButton(
             visible = pagerState.currentPage == LAST_ON_BOARDING_PAGE
         ) {
             Button(
-                onClick = onClick, colors = ButtonDefaults.buttonColors(
+                onClick = onClick,
+                colors = ButtonDefaults.buttonColors(
                     backgroundColor = MaterialTheme.colors.buttonBgColor,
                     contentColor = Color.White
                 )

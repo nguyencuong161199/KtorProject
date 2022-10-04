@@ -1,4 +1,4 @@
-package com.example.gstktor.domain.use_cases.save_onboarding
+package com.example.gstktor.domain.use_cases.save_onboarding // ktlint-disable package-name
 
 import com.example.gstktor.data.repository.Repository
 

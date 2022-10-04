@@ -46,7 +46,7 @@ val Colors.titleColor
 
 val Colors.descriptionColor
     @Composable
-    get() = if (isLight) DarkGray.copy(alpha = 0.5f) else LightGray.copy(alpha = 0.5f)
+    get() = if (isLight) DarkGray.copy(alpha = 1f) else LightGray.copy(alpha = 0.5f)
 
 val Colors.activeIndicatorColor
     @Composable
@@ -58,7 +58,7 @@ val Colors.inactiveIndicatorColor
 
 val Colors.buttonBgColor
     @Composable
-    get() = if (isLight) White else Purple700
+    get() = if (isLight) Color.Black else Purple700
 
 val Colors.topAppBarContentColor
     @Composable
