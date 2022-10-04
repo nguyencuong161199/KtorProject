@@ -6,20 +6,20 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import com.example.gstktor.data.local.BorutoDatabase
-import com.example.gstktor.data.remote.BorutoApi
+import com.example.gstktor.data.local.GwmDatabase
+import com.example.gstktor.data.remote.GwmApi
 import com.example.gstktor.domain.model.Hero
 import com.example.gstktor.domain.model.HeroRemoteKeys
 import javax.inject.Inject
 
 @ExperimentalPagingApi
 class HeroRemoteMediator @Inject constructor(
-    private val borutoApi: BorutoApi,
-    private val borutoDatabase: BorutoDatabase
+    private val gwmApi: GwmApi,
+    private val gwmDatabase: GwmDatabase
 ) : RemoteMediator<Int, Hero>() {
 
-    private val heroDao = borutoDatabase.heroDao()
-    private val heroRemoteKeysDao = borutoDatabase.heroRemoteKeysDao()
+    private val heroDao = gwmDatabase.heroDao()
+    private val heroRemoteKeysDao = gwmDatabase.heroRemoteKeysDao()
 
     override suspend fun initialize(): InitializeAction {
         val currentTime = System.currentTimeMillis()
@@ -56,9 +56,9 @@ class HeroRemoteMediator @Inject constructor(
                 }
             }
 
-            val response = borutoApi.getAllHeroes(page = page)
+            val response = gwmApi.getAllHeroes(page = page)
             if (response.heroes.isNotEmpty()) {
-                borutoDatabase.withTransaction {
+                gwmDatabase.withTransaction {
                     if (loadType == LoadType.REFRESH) {
                         heroDao.deleteAllHeroes()
                         heroRemoteKeysDao.deleteAllRemoteKeys()

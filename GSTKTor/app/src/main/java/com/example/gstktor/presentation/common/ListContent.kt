@@ -16,7 +16,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.navigation.NavHostController
 import androidx.paging.LoadState
@@ -24,10 +23,9 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
-import com.example.gstktor.ui.theme.*
+import com.example.gstktor.ui.theme.* // ktlint-disable no-wildcard-imports
 import com.example.gstktor.domain.model.Hero
 import com.example.gstktor.navigation.Screen
-import com.example.gstktor.presentation.components.RatingWidget
 import com.example.gstktor.presentation.components.ShimmerEffect
 import com.example.gstktor.util.Constants.BASE_URL
 import com.example.gstktor.R
@@ -142,20 +140,6 @@ fun HeroItem(
                     maxLines = 3,
                     overflow = TextOverflow.Ellipsis
                 )
-                Row(
-                    modifier = Modifier.padding(top = SMALL_PADDING),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    RatingWidget(
-                        modifier = Modifier.padding(end = DEFAULT_PADDING),
-                        rating = hero.rating
-                    )
-                    Text(
-                        text = "(${hero.rating})",
-                        textAlign = TextAlign.Center,
-                        color = Color.White.copy(alpha = ContentAlpha.medium)
-                    )
-                }
             }
         }
     }

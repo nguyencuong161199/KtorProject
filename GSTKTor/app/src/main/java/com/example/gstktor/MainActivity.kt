@@ -11,7 +11,7 @@ import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.pager.ExperimentalPagerApi
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.gstktor.navigation.SetupNavGraph
-import com.example.gstktor.ui.theme.BorutoAppTheme
+import com.example.gstktor.ui.theme.GWMAppTheme
 
 @ExperimentalMaterialApi
 @ExperimentalCoilApi
@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            BorutoAppTheme {
+            GWMAppTheme {
                 navController = rememberNavController()
                 SetupNavGraph(navController = navController)
             }

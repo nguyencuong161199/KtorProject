@@ -36,6 +36,7 @@ fun DetailsScreen(
 
     val context = LocalContext.current
 
+    // Check điều kiện , nếu ui action kéo  = true => zoom
     LaunchedEffect(key1 = true) {
         detailsViewModel.uiEvent.collectLatest { event ->
             when (event) {

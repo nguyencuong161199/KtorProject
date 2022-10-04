@@ -7,10 +7,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.annotation.ExperimentalCoilApi
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.example.gstktor.navigation.Screen
 import com.example.gstktor.presentation.common.ListContent
 import com.example.gstktor.ui.theme.statusBarColor
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @ExperimentalCoilApi
 @Composable
@@ -26,9 +25,6 @@ fun HomeScreen(
     )
 
     Scaffold(
-        topBar = {
-            HomeTopBar(onSearchClicked = { navController.navigate(Screen.Search.route) })
-        },
         content = { ListContent(heroes = allHeroes, navController = navController) }
     )
 }
